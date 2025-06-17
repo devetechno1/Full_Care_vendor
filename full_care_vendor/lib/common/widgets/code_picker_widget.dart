@@ -73,6 +73,7 @@ class CodePickerWidget extends StatefulWidget {
     this.countryList = codes,
     super.key,
   });
+
   @override
   State<CodePickerWidget> createState() => _CodePickerWidgetState();
 }
@@ -187,6 +188,10 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
                 hideSearch: widget.hideSearch!,
                 closeIcon: widget.closeIcon,
                 flagDecoration: widget.flagDecoration,
+                headerAlignment: MainAxisAlignment.spaceBetween,
+                headerTextStyle: context.textTheme.headlineMedium!,
+                hideHeaderText: true,
+                topBarPadding: EdgeInsets.zero,
               ),
             ),
           ),
@@ -223,6 +228,10 @@ class _CodePickerWidgetState extends State<CodePickerWidget> {
             barrierColor: widget.barrierColor,
             hideSearch: widget.hideSearch!,
             closeIcon: widget.closeIcon,
+            headerAlignment: MainAxisAlignment.spaceBetween,
+            headerTextStyle: context.textTheme.headlineMedium!,
+            hideHeaderText: true,
+            topBarPadding: EdgeInsets.zero,
           ),
         ),
       ).then((e) {
