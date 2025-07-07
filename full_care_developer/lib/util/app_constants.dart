@@ -2,7 +2,7 @@ import 'package:sixam_mart_store/features/language/domain/models/language_model.
 import 'package:sixam_mart_store/util/images.dart';
 
 class AppConstants {
-  static const String appName = 'Full Care U Vendor';
+  static const String appName = 'FULL CARE DEVELOPER';
   static const double appVersion = 3.1; ///Flutter SDK: 3.29.3
 
   static const String fontFamily = 'Roboto';

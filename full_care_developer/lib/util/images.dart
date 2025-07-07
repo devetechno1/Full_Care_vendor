@@ -6,6 +6,8 @@ class Images {
   static const String spanish = 'assets/image/spanish.png';
   static const String call = 'assets/image/call.png';
   static const String mail = 'assets/image/mail.png';
+   static const String hospital = 'assets/image/hospital.png';
+   static const String nurse = 'assets/image/nurse.png';
   static const String placeholder = 'assets/image/placeholder.jpg';
   static const String notificationPlaceholder = 'assets/image/notification_placeholder.jpg';
   static const String logOut = 'assets/image/log_out.png';

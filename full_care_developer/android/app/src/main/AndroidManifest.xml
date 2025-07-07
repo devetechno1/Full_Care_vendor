@@ -38,7 +38,7 @@
         </queries>
 
         <application
-            android:label="Full Care U Vendor"
+            android:label="FULL CARE DEVELOPER"
             android:name="${applicationName}"
             android:extractNativeLibs="true"
             android:requestLegacyExternalStorage="true"

@@ -529,7 +529,7 @@ class _StoreSettingsScreenState extends State<StoreSettingsScreen> {
                 }),
                 const SizedBox(height: Dimensions.paddingSizeSmall),
 
-                widget.store.module!.moduleType.toString() == 'food' ? SwitchButtonWidget(icon: Icons.flatware, title: 'cutlery'.tr, isButtonActive: storeController.isCutleryEnabled, onTap: () {
+                widget.store.module!.moduleType.toString() == 'food' ? SwitchButtonWidget(icon: Icons.local_hospital_outlined, title: 'cutlery'.tr, isButtonActive: storeController.isCutleryEnabled, onTap: () {
                   storeController.toggleCutlery();
                 }) : const SizedBox(),
                 SizedBox(height: widget.store.module!.moduleType.toString() == 'food' ? Dimensions.paddingSizeSmall : 0),

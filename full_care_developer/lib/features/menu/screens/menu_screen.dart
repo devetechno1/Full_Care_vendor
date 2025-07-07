@@ -21,7 +21,7 @@ class MenuScreen extends StatelessWidget {
 
     if(Get.find<ProfileController>().modulePermission!.item!) {
       menuList.add(MenuModel(
-        icon: Images.addFood, title: 'add_item'.tr, route: RouteHelper.getAddItemRoute(null),
+        icon: Images.nurse, title: 'add_item'.tr, route: RouteHelper.getAddItemRoute(null),
         isBlocked: !Get.find<ProfileController>().profileModel!.stores![0].itemSection!,
       ));
     }
@@ -61,7 +61,7 @@ class MenuScreen extends StatelessWidget {
     menuList.add(MenuModel(icon: Images.mySubscriptionIcon, title: 'my_business_plan'.tr, route: RouteHelper.getMySubscriptionRoute()));
 
     if(Get.find<SplashController>().configModel!.moduleConfig!.module!.addOn! && Get.find<ProfileController>().modulePermission!.addon!) {
-      menuList.add(MenuModel(icon: Images.addon, title: 'addons'.tr, route: RouteHelper.getAddonsRoute()));
+      menuList.add(MenuModel(icon: Images.hospital, title: 'addons'.tr, route: RouteHelper.getAddonsRoute()));
     }
     if(Get.find<ProfileController>().modulePermission!.chat!) {
       menuList.add(
