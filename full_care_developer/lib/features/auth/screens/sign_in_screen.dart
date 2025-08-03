@@ -74,19 +74,18 @@ class _SignInScreenState extends State<SignInScreen> {
 
                 return Column(children: [
 
-                  Image.asset(Images.logo, width: 200),
-                  const SizedBox(height: Dimensions.paddingSizeExtraLarge),
+                  Image.asset(Images.logoLogin, width: double.infinity),
+                  const SizedBox(height: Dimensions.paddingSizeDefault),
 
                   Text('sign_in'.tr.toUpperCase(), style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge)),
                   const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
-                  const SizedBox(height: 50),
+                  // const SizedBox(height: 50),
 
                   Container(
                     height: 50,
                     padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: Row(children: [
-
                       Expanded(
                         child: InkWell(
                           onTap: () => authController.changeVendorType(0),
@@ -133,7 +132,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
                     ]),
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 60),
 
                   Form(
                     key: _formKeyLogin,
