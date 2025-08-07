@@ -16,6 +16,8 @@ import 'package:sixam_mart_store/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../theme/colors.dart';
+
 class SplashScreen extends StatefulWidget {
   final NotificationBodyModel? body;
   const SplashScreen({super.key, required this.body});
@@ -146,14 +148,26 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _globalKey,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Image.asset(Images.logo, width: 200),
-            const SizedBox(height: Dimensions.paddingSizeSmall),
-            Text('suffix_name'.tr, style: robotoMedium, textAlign: TextAlign.center),
-          ]),
+      body: Container(
+        decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+          AppColor.splashColorLeft,
+          AppColor.splashColorRight,
+          ],
+        ),
+      ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Image.asset(Images.splashLogo, width: 150),
+              const SizedBox(height: Dimensions.paddingSizeSmall),
+              Text('suffix_name'.tr, style: robotoMedium.copyWith(color: Colors.white), textAlign: TextAlign.center),
+            ]),
+          ),
         ),
       ),
     );
