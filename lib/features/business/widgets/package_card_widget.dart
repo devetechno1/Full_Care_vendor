@@ -31,10 +31,10 @@ class PackageCardWidget extends StatelessWidget {
           ),
         ),
 
-        Positioned(
-          top: 0, left: 23, right: 0,
+        PositionedDirectional(
+          top: 0, start: 23, end: 0,
           child: ClipRRect(
-            borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.radiusDefault)),
+            borderRadius: const BorderRadiusDirectional.only(topEnd: Radius.circular(Dimensions.radiusDefault)),
             child: CustomPaint(
               size: const Size(183, 152),
               painter: RPSCustomPainter(
@@ -45,7 +45,7 @@ class PackageCardWidget extends StatelessWidget {
         ),
 
         Positioned(
-          top: 30, left: 0, right: 0,
+          top: 30, left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault,
           child: Column(children: [
 
             Padding(

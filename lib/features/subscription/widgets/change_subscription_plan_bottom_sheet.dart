@@ -76,9 +76,8 @@ class _ChangeSubscriptionPlanBottomSheetState extends State<ChangeSubscriptionPl
         width: double.infinity,
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(Dimensions.radiusExtraLarge),
-            topRight: Radius.circular(Dimensions.radiusExtraLarge),
+          borderRadius: const BorderRadius.vertical(
+            top: Radius.circular(Dimensions.radiusExtraLarge),
           ),
         ),
         child: Column(mainAxisSize: MainAxisSize.min, children: [

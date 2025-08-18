@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sixam_mart_store/features/auth/controllers/auth_controller.dart';
 import 'package:sixam_mart_store/features/dashboard/widgets/out_of_stock_warning_bottom_sheet.dart';
 import 'package:sixam_mart_store/features/profile/controllers/profile_controller.dart';
@@ -21,7 +22,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
+import '../../../util/app_constants.dart';
+import '../../category/screens/category_screen.dart';
 import '../../dev_accounts/screens/dev_accounts_screen.dart';
+
+bool get isEmployee => Get.find<SharedPreferences>().getString(AppConstants.type) == 'employee';
 
 class DashboardScreen extends StatefulWidget {
   final int pageIndex;
@@ -51,7 +56,7 @@ class DashboardScreenState extends State<DashboardScreen> {
       authController.getModuleType() == 'rental' ? const TaxiHomeScreen() : const HomeScreen(),
       authController.getModuleType() == 'rental' ? const TripHistoryScreen() : const OrderHistoryScreen(),
       authController.getModuleType() == 'rental' ? const ProviderScreen() : const StoreScreen(),
-      const DevAccountsScreen(),
+      isEmployee ? const CategoryScreen(categoryModel: null,showBackButton: false) : const DevAccountsScreen(),
       Container(),
     ];
 
@@ -167,10 +172,11 @@ class DashboardScreenState extends State<DashboardScreen> {
                   onTap: () => _setPage(1),
                 ),
                 const Expanded(child: SizedBox()),
+
                 BottomNavItemWidget(
-                  title: 'transactions'.tr,
-                  selectedIcon: Images.walletSelect,
-                  unSelectedIcon: Images.walletUnSelect,
+                  title: isEmployee ? 'categories'.tr : 'transactions'.tr,
+                  selectedIcon: isEmployee ? Images.categories : Images.walletSelect,
+                  unSelectedIcon: isEmployee ? Images.categoriesUnselect : Images.walletUnSelect,
                   isSelected: _pageIndex == 3,
                   onTap: () => _setPage(3),
                 ),

@@ -35,6 +35,7 @@ class Images {
   static const String restaurantCover = 'assets/image/restaurant_cover.png';
   static const String addon = 'assets/image/addon.png';
   static const String categories = 'assets/image/categories.png';
+  static const String categoriesUnselect = 'assets/image/categories_outlined.png';
   static const String edit = 'assets/image/edit.png';
   static const String addFood = 'assets/image/add_food.png';
   static const String notificationIn = 'assets/image/notification_in.png';

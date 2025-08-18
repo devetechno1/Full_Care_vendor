@@ -10,7 +10,8 @@ import 'package:get/get.dart';
 
 class CategoryScreen extends StatelessWidget {
   final CategoryModel? categoryModel;
-  const CategoryScreen({super.key, required this.categoryModel});
+  final bool showBackButton;
+  const CategoryScreen({super.key, required this.categoryModel, this.showBackButton = true});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CategoryScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: CustomAppBarWidget(title: isCategory ? 'categories'.tr : categoryModel!.name),
+      appBar: CustomAppBarWidget(title: isCategory ? 'categories'.tr : categoryModel!.name, isBackButtonExist: showBackButton),
       body: GetBuilder<CategoryController>(builder: (categoryController) {
         List<CategoryModel>? categories;
         if(isCategory && categoryController.categoryList != null) {

@@ -268,7 +268,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ) : const SizedBox(),
               const SizedBox(height: Dimensions.paddingSizeDefault),
 
-              profileController.modulePermission != null && profileController.modulePermission!.wallet! ? GestureDetector(
+              profileController.modulePermission != null && profileController.modulePermission!.wallet! && !isEmployee ? GestureDetector(
                 onTap: () => Get.offAll(() => const DashboardScreen(pageIndex: 3),transition: Transition.noTransition),
                 child: Row(children: [
                   Expanded(
