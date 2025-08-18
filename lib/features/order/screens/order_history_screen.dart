@@ -47,6 +47,7 @@ class OrderHistoryScreen extends StatelessWidget {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: orderController.statusList.length,
+                shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return OrderButtonWidget(
                     title: orderController.statusList[index].tr, index: index, orderController: orderController, fromHistory: true,

@@ -9,7 +9,8 @@ class AppConstants {
   static const double limitOfPickedVideoSizeInMB = 50;
   static const double maxSizeOfASingleFile = 10;
 
-  static const String baseUrl = 'https://fullcareu.com';
+  static const String baseUrl = 'http://192.168.100.200:8080/fullcareu';
+  // static const String baseUrl = 'https://fullcareu.com';
 
   static const String configUri = '/api/v1/config';
   static const String loginUri = '/api/v1/auth/vendor/login';
@@ -24,6 +25,7 @@ class AppConstants {
   static const String updatedOrderStatusUri = '/api/v1/vendor/update-order-status';
   static const String notificationUri = '/api/v1/vendor/notifications';
   static const String profileUri = '/api/v1/vendor/profile';
+  static const String devAccountsUri = '/api/v1/vendor/accounts';
   static const String updateProfileUri = '/api/v1/vendor/update-profile';
   static const String basicCampaignUri = '/api/v1/vendor/get-basic-campaigns';
   static const String joinCampaignUri = '/api/v1/vendor/campaign-join';

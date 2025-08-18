@@ -64,6 +64,8 @@ import 'package:sixam_mart_store/features/subscription/screens/my_subscription_s
 import 'package:sixam_mart_store/features/update/screens/update_screen.dart';
 import 'package:get/get.dart';
 
+import '../features/dev_accounts/screens/dev_accounts_screen.dart';
+
 class RouteHelper {
   static const String initial = '/';
   static const String splash = '/splash';
@@ -128,6 +130,8 @@ class RouteHelper {
   static const String createAdvertisement = '/create-advertisement';
   static const String advertisementDetails = '/advertisement-details';
   static const String lowStock = '/low-stock';
+
+  static const String devAccounts = '/dev-accounts';
 
   static String getInitialRoute() => initial;
   static String getSplashRoute(NotificationBodyModel? body) {
@@ -257,6 +261,30 @@ class RouteHelper {
   static String getCreateAdvertisementRoute() => createAdvertisement;
   static String getAdvertisementDetailsScreen({required int? advertisementId, bool? fromNotification}) => '$advertisementDetails?advertisementId=$advertisementId&fromNotification=$fromNotification';
   static String getLowStockRoute() => lowStock;
+
+    static String getDevAccountsRoute({
+    String? inOut,
+    String? target,
+    String? payMethod,
+    int? orderId,
+    String? from,
+    String? to,
+    String? search,
+  }) {
+    final params = <String, String>{
+      if (inOut != null && inOut.isNotEmpty) 'in_out': inOut,
+      if (target != null && target.isNotEmpty) 'target': target,
+      if (payMethod != null && payMethod.isNotEmpty) 'pay_method': payMethod,
+      if (orderId != null) 'order_id': '$orderId',
+      if (from != null && from.isNotEmpty) 'from': from,
+      if (to != null && to.isNotEmpty) 'to': to,
+      if (search != null && search.isNotEmpty) 'search': search,
+    };
+    if (params.isEmpty) return devAccounts;
+    final q = params.entries.map((e) =>
+      '${Uri.encodeQueryComponent(e.key)}=${Uri.encodeQueryComponent(e.value)}').join('&');
+    return '$devAccounts?$q';
+  }
 
   static List<GetPage> routes = [
     GetPage(name: initial, page: () => const DashboardScreen(pageIndex: 0)),
@@ -408,5 +436,19 @@ class RouteHelper {
       id: int.parse(Get.parameters['advertisementId']!), fromNotification: Get.parameters['fromNotification'] == 'true',
     )),
     GetPage(name: lowStock, page: () => const LowStockScreen()),
+
+    GetPage(
+      name: devAccounts,
+      page: () => DevAccountsScreen(
+        inOut: Get.parameters['in_out'],
+        target: Get.parameters['target'],
+        payMethod: Get.parameters['pay_method'],
+        orderId: Get.parameters['order_id'] != null
+            ? int.tryParse(Get.parameters['order_id']!) : null,
+        from: Get.parameters['from'],
+        to: Get.parameters['to'],
+        search: Get.parameters['search'],
+      ),
+    ),
   ];
 }

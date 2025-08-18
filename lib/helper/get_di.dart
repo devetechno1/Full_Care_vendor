@@ -162,6 +162,13 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 
+import '../features/dev_accounts/controllers/dev_accounts_controller.dart';
+import '../features/dev_accounts/domain/repositories/dev_accounts_repository.dart';
+import '../features/dev_accounts/domain/repositories/dev_accounts_repository_interface.dart';
+import '../features/dev_accounts/domain/services/dev_accounts_service.dart';
+import '../features/dev_accounts/domain/services/dev_accounts_service_interface.dart';
+
+
 Future<Map<String, Map<String, String>>> init() async {
 
   /// Core
@@ -264,6 +271,10 @@ Future<Map<String, Map<String, String>>> init() async {
   TaxiChatRepositoryInterface taxiChatRepositoryInterface = TaxiChatRepository(apiClient: Get.find(), sharedPreferences: Get.find());
   Get.lazyPut(() => taxiChatRepositoryInterface);
 
+  DevAccountsRepositoryInterface devAccountsRepositoryInterface = DevAccountsRepository(apiClient: Get.find(), sharedPreferences: Get.find());
+  Get.lazyPut<DevAccountsRepositoryInterface>(() => devAccountsRepositoryInterface);
+
+
   /// Service Interface
   AuthServiceInterface authServiceInterface = AuthService(authRepositoryInterface: Get.find());
   Get.lazyPut(() => authServiceInterface);
@@ -359,6 +370,10 @@ Future<Map<String, Map<String, String>>> init() async {
   TaxiChatServiceInterface taxiChatServiceInterface = TaxiChatService(chatRepositoryInterface: Get.find());
   Get.lazyPut(() => taxiChatServiceInterface);
 
+  DevAccountsServiceInterface devAccountsServiceInterface = DmAccountsService(repo: Get.find());
+  Get.lazyPut<DevAccountsServiceInterface>(() => devAccountsServiceInterface);
+
+
   /// Controller
   Get.lazyPut(() => AuthController(authServiceInterface: Get.find()));
   Get.lazyPut(() => BusinessController(businessServiceInterface: Get.find()));
@@ -385,6 +400,7 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => PosController(posServiceInterface: Get.find()));
   Get.lazyPut(() => SubscriptionController(subscriptionServiceInterface: Get.find()));
   Get.lazyPut(() => AdvertisementController(advertisementServiceInterface: Get.find()));
+  Get.lazyPut(() => DevAccountsController(service: Get.find()));
 
   ///Taxi module Controllers
   Get.lazyPut(() => ProviderController(providerServiceInterface: Get.find()));

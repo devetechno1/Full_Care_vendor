@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sixam_mart_store/features/home/widgets/trial_widget.dart';
 import 'package:sixam_mart_store/features/language/controllers/language_controller.dart';
 import 'package:sixam_mart_store/common/controllers/theme_controller.dart';
@@ -83,6 +84,11 @@ class MyApp extends StatelessWidget {
           navigatorKey: Get.key,
           theme: themeController.darkTheme ? dark() : light(),
           locale: localizeController.locale,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
           translations: Messages(languages: languages),
           fallbackLocale: Locale(AppConstants.languages[0].languageCode!, AppConstants.languages[0].countryCode),
           initialRoute: RouteHelper.getSplashRoute(body),

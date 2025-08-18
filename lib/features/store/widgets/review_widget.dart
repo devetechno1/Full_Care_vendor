@@ -26,7 +26,8 @@ class ReviewWidget extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
           Text(
-            fromStore ? review.itemName! : review.customer != null ?'${ review.customer!.fName} ${ review.customer!.lName}' : 'customer_not_found'.tr,
+            'anonymous'.tr,
+            // fromStore ? review.itemName! : review.customer != null ?'${ review.customer!.fName} ${ review.customer!.lName}' : 'customer_not_found'.tr,
             maxLines: 1, overflow: TextOverflow.ellipsis, style: robotoMedium,
           ),
           const SizedBox(height: Dimensions.paddingSizeExtraSmall),

@@ -21,6 +21,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
+import '../../dashboard/screens/dashboard_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -266,86 +268,89 @@ class _HomeScreenState extends State<HomeScreen> {
               ) : const SizedBox(),
               const SizedBox(height: Dimensions.paddingSizeDefault),
 
-              profileController.modulePermission != null && profileController.modulePermission!.wallet! ? Row(children: [
-                Expanded(
-                  child: Container(
-                    height: 200,
-                    padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                      color: Theme.of(context).primaryColor,
+              profileController.modulePermission != null && profileController.modulePermission!.wallet! ? GestureDetector(
+                onTap: () => Get.offAll(() => const DashboardScreen(pageIndex: 3),transition: Transition.noTransition),
+                child: Row(children: [
+                  Expanded(
+                    child: Container(
+                      height: 200,
+                      padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                
+                        Image.asset(Images.wallet, width: 70, height: 70),
+                        const Spacer(),
+                
+                        Text(
+                          'balance'.tr,
+                          style: robotoRegular.copyWith(color: Theme.of(context).cardColor.withValues(alpha: 0.7)),
+                        ),
+                        const SizedBox(height: Dimensions.paddingSizeSmall),
+                        Text(
+                          profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.balance) : '0',
+                          style: robotoBold.copyWith(fontSize: 24, color: Theme.of(context).cardColor),
+                        ),
+                
+                      ]),
                     ),
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-
-                      Image.asset(Images.wallet, width: 70, height: 70),
-                      const Spacer(),
-
-                      Text(
-                        'today'.tr,
-                        style: robotoRegular.copyWith(color: Theme.of(context).cardColor.withValues(alpha: 0.7)),
-                      ),
-                      const SizedBox(height: Dimensions.paddingSizeSmall),
-                      Text(
-                        profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.todaysEarning) : '0',
-                        style: robotoBold.copyWith(fontSize: 24, color: Theme.of(context).cardColor),
-                      ),
-
-                    ]),
                   ),
-                ),
-                const SizedBox(width: Dimensions.paddingSizeSmall),
-
-                Expanded(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: double.infinity, height: 95,
-                        padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeLarge),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                          color: Theme.of(context).primaryColor.withValues(alpha: 0.8),
+                  const SizedBox(width: Dimensions.paddingSizeSmall),
+                
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Container(
+                          width: double.infinity, height: 95,
+                          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeLarge),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                            color: Theme.of(context).primaryColor.withValues(alpha: 0.8),
+                          ),
+                          child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                
+                            Text(
+                              'realized_profits'.tr,
+                              style: robotoRegular.copyWith(color: Theme.of(context).cardColor.withValues(alpha: 0.7)),
+                            ),
+                            const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+                            Text(
+                              profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.cashInHands) : '0',
+                              style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge, color: Theme.of(context).cardColor),
+                            ),
+                
+                          ]),
                         ),
-                        child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
-
-                          Text(
-                            'this_week'.tr,
-                            style: robotoRegular.copyWith(color: Theme.of(context).cardColor.withValues(alpha: 0.7)),
+                        const SizedBox(height: Dimensions.paddingSizeSmall),
+                
+                        Container(
+                          width: double.infinity, height: 95,
+                          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeLarge),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                            color: Theme.of(context).primaryColor,
                           ),
-                          const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-                          Text(
-                            profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.thisWeekEarning) : '0',
-                            style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge, color: Theme.of(context).cardColor),
-                          ),
-
-                        ]),
-                      ),
-                      const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                      Container(
-                        width: double.infinity, height: 95,
-                        padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeLarge),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                          color: Theme.of(context).primaryColor,
+                          child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                
+                            Text(
+                              'deferred_profits'.tr,
+                              style: robotoRegular.copyWith(color: Theme.of(context).cardColor.withValues(alpha: 0.7)),
+                            ),
+                            const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+                            Text(
+                              profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.debtValue) : '0',
+                              style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge, color: Theme.of(context).cardColor),
+                            ),
+                
+                          ]),
                         ),
-                        child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
-
-                          Text(
-                            'this_month'.tr,
-                            style: robotoRegular.copyWith(color: Theme.of(context).cardColor.withValues(alpha: 0.7)),
-                          ),
-                          const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-                          Text(
-                            profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.thisMonthEarning) : '0',
-                            style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge, color: Theme.of(context).cardColor),
-                          ),
-
-                        ]),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ]) : const SizedBox(),
+                ]),
+              ) : const SizedBox(),
               const SizedBox(height: Dimensions.paddingSizeExtraLarge),
 
               const AdsSectionWidget(),
@@ -361,6 +366,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   orderController.runningOrders != null ? Container(
                     height: 40,
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
                       border: Border.all(color: Theme.of(context).disabledColor, width: 1),
                       borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
@@ -368,6 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: orderController.runningOrders!.length,
+                      shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return OrderButtonWidget(
                           title: orderController.runningOrders![index].status.tr, index: index,
@@ -457,7 +464,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 if(isBatteryPermission)
                   const Padding(
-                    padding: EdgeInsets.only(right: 8.0),
+                    padding: EdgeInsetsDirectional.only(end: 8.0),
                     child: Icon(Icons.warning_rounded, color: Colors.yellow,),
                   ),
 
@@ -471,7 +478,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     const SizedBox(width: Dimensions.paddingSizeSmall),
-                    const Icon(Icons.arrow_circle_right_rounded, color: Colors.white, size: 24,),
+                    Icon(Get.locale?.languageCode == 'ar' ? Icons.arrow_circle_left_rounded :  Icons.arrow_circle_right_rounded, color: Colors.white, size: 24,),
                   ]),
                 ),
 
@@ -479,8 +486,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ]),
             ),
 
-            Positioned(
-              top: 5, right: 5,
+            PositionedDirectional(
+              top: 5, end: 5,
               child: InkWell(
                 onTap: closeOnTap,
                 child: const Icon(Icons.clear, color: Colors.white, size: 18),

@@ -20,6 +20,7 @@ class ProfileModel {
   int? memberSinceDays;
   double? cashInHands;
   double? balance;
+  double? debtValue;
   double? totalEarning;
   double? todaysEarning;
   double? thisWeekEarning;
@@ -63,6 +64,7 @@ class ProfileModel {
     this.memberSinceDays,
     this.cashInHands,
     this.balance,
+    this.debtValue,
     this.totalEarning,
     this.todaysEarning,
     this.thisWeekEarning,
@@ -106,7 +108,8 @@ class ProfileModel {
     thisMonthOrderCount = json['this_month_order_count'];
     memberSinceDays = json['member_since_days'];
     cashInHands = json['cash_in_hands']?.toDouble();
-    balance = json['balance']?.toDouble();
+    balance = double.tryParse("${json['store_vendor_wallets']?['wallet_value']}");
+    debtValue = double.tryParse("${json['store_vendor_wallets']?['debt_value']}");
     totalEarning = json['total_earning']?.toDouble();
     todaysEarning = json['todays_earning']?.toDouble();
     thisWeekEarning = json['this_week_earning']?.toDouble();
@@ -168,7 +171,10 @@ class ProfileModel {
     data['this_month_order_count'] = thisMonthOrderCount;
     data['member_since_days'] = memberSinceDays;
     data['cash_in_hands'] = cashInHands;
-    data['balance'] = balance;
+    data['store_vendor_wallets'] = {
+      "wallet_value": balance,
+      "debt_value": debtValue,
+    };
     data['total_earning'] = totalEarning;
     data['todays_earning'] = todaysEarning;
     data['this_week_earning'] = thisWeekEarning;

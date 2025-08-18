@@ -12,7 +12,6 @@ import 'package:sixam_mart_store/features/rental_module/provider/screens/provide
 import 'package:sixam_mart_store/features/rental_module/trips/screens/trip_history_screen.dart';
 import 'package:sixam_mart_store/util/dimensions.dart';
 import 'package:sixam_mart_store/util/images.dart';
-import 'package:sixam_mart_store/features/payment/screens/wallet_screen.dart';
 import 'package:sixam_mart_store/features/dashboard/widgets/bottom_nav_item_widget.dart';
 import 'package:sixam_mart_store/features/home/screens/home_screen.dart';
 import 'package:sixam_mart_store/features/menu/screens/menu_screen.dart';
@@ -21,6 +20,8 @@ import 'package:sixam_mart_store/features/store/screens/store_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+
+import '../../dev_accounts/screens/dev_accounts_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   final int pageIndex;
@@ -50,7 +51,7 @@ class DashboardScreenState extends State<DashboardScreen> {
       authController.getModuleType() == 'rental' ? const TaxiHomeScreen() : const HomeScreen(),
       authController.getModuleType() == 'rental' ? const TripHistoryScreen() : const OrderHistoryScreen(),
       authController.getModuleType() == 'rental' ? const ProviderScreen() : const StoreScreen(),
-      const WalletScreen(),
+      const DevAccountsScreen(),
       Container(),
     ];
 
@@ -167,7 +168,7 @@ class DashboardScreenState extends State<DashboardScreen> {
                 ),
                 const Expanded(child: SizedBox()),
                 BottomNavItemWidget(
-                  title: 'wallet'.tr,
+                  title: 'transactions'.tr,
                   selectedIcon: Images.walletSelect,
                   unSelectedIcon: Images.walletUnSelect,
                   isSelected: _pageIndex == 3,

@@ -64,7 +64,7 @@ class OrderWidget extends StatelessWidget {
               style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor),
             ),
 
-            showStatus ? const SizedBox() : Icon(Icons.keyboard_arrow_right, size: 30, color: Theme.of(context).primaryColor),
+            showStatus ? const SizedBox() : Icon(Get.locale?.languageCode == 'ar' ? Icons.keyboard_arrow_left : Icons.keyboard_arrow_right, size: 30, color: Theme.of(context).primaryColor),
 
           ]),
         ),
