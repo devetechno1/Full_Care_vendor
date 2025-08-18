@@ -48,7 +48,7 @@ class DevAccountCardWidget extends StatelessWidget {
                     children: [
                       if (item.target != null)
                         _chip(
-                          text: item.target!.name.tr,
+                          text: item.target!.toString(),
                           color: item.target!.color,
                         ),
                       const SizedBox(width: 8),

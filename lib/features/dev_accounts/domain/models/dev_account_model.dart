@@ -35,7 +35,9 @@ enum DevItemTarget {
   order("order");
 
   final String _name;
-  String get name => _name.tr;
+  
+  @override
+  String toString()=> _name.tr;
 
   const DevItemTarget(this._name);
 
