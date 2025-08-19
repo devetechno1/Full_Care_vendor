@@ -83,9 +83,9 @@ class _CouponScreenState extends State<CouponScreen> {
                           Expanded(
                             flex: 8,
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall, horizontal: Dimensions.paddingSizeLarge),
+                              padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeDefault, horizontal: Dimensions.paddingSizeLarge),
                               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                // SizedBox(height: 10),
+                                SizedBox(height: 10),
                                 Row( mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                                   Text('${'${couponController.coupons![index].couponType == 'free_delivery' ? 'free_delivery'.tr : couponController.coupons![index].discountType != 'percent' ?
                                   PriceConverterHelper.convertPrice(double.parse(couponController.coupons![index].discount.toString())) :
