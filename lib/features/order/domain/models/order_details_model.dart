@@ -48,14 +48,21 @@ class OrderDetailsModel {
     variation = [];
     foodVariation = [];
     if (json['variation'] != null && json['variation'].isNotEmpty) {
-      if(json['variation'][0]['values'] != null) {
-        json['variation'].forEach((v) {
+      final List variations = [];
+      if(json['variation'] is Map){
+         variations.addAll((json['variation'] as Map).values);
+      }else if(json['variation'] is List){
+        variations.addAll(json['variation']);
+      }
+
+      if(variations[0]['values'] != null) {
+        for (var v in variations) {
           foodVariation!.add(FoodVariation.fromJson(v));
-        });
+        }
       }else {
-        json['variation'].forEach((v) {
+        for (var v in variations) {
           variation!.add(Variation.fromJson(v));
-        });
+        }
       }
     }
     if (json['add_ons'] != null) {
