@@ -7,11 +7,14 @@ import 'package:sixam_mart_store/util/dimensions.dart';
 import 'package:sixam_mart_store/util/images.dart';
 import 'package:sixam_mart_store/util/styles.dart';
 
+import '../../language/controllers/language_controller.dart';
+
 class AdsSectionWidget extends StatelessWidget {
   const AdsSectionWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final bool isArabic = !Get.find<LocalizationController>().isLtr;
     return Stack(
       children: [
         Stack(
@@ -34,21 +37,15 @@ class AdsSectionWidget extends StatelessWidget {
                 child: Row(children: [
 
                   Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 100),
-                      child: Text('want_to_get_highlighted'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
-                    ),
+                    Text('want_to_get_highlighted'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
                     const SizedBox(height: Dimensions.paddingSizeSmall),
 
-                    Padding(
-                      padding: const EdgeInsets.only(right: 100),
-                      child: Text(
-                        'in_the_customer_app_and_websites'.tr,
-                        textAlign: TextAlign.center,
-                        style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).disabledColor),
-                      ),
+                    Text(
+                      'in_the_customer_app_and_websites'.tr,
+                      textAlign: TextAlign.center,
+                      style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).disabledColor),
                     ),
                     const SizedBox(height: Dimensions.paddingSizeSmall),
 
@@ -58,21 +55,21 @@ class AdsSectionWidget extends StatelessWidget {
               ),
             ),
 
-            const Positioned(
-              top: 3, right: 3,
-              child: CustomAssetImageWidget(Images.adsRoundShape, height: 100, width: 100, color: Colors.white),
+            PositionedDirectional(
+              top: 3, end: 3,
+              child: CustomAssetImageWidget(Images.adsRoundShape, height: 100, width: 100, color: Colors.white, flipX: isArabic),
             ),
 
-            const Positioned(
-              bottom: 3, left: 3,
-              child: CustomAssetImageWidget(Images.adsCurveShape, height: 100, width: 100, color: Colors.white),
+            PositionedDirectional(
+              bottom: 3, start: 3,
+              child: CustomAssetImageWidget(Images.adsCurveShape, height: 100, width: 100, color: Colors.white, flipX: isArabic),
             ),
 
           ],
         ),
 
-        Positioned(
-          bottom: 15, left: 15,
+        PositionedDirectional(
+          bottom: 15, start: 15,
           width: 120,
           child: CustomButtonWidget(
             buttonText: 'create_ads'.tr,
@@ -84,9 +81,9 @@ class AdsSectionWidget extends StatelessWidget {
           ),
         ),
 
-        const Positioned(
-          top: 30, right: 15,
-          child:  CustomAssetImageWidget(Images.adsImage, height: 85, width: 98),
+        PositionedDirectional(
+          top: 30, end: 15,
+          child:  CustomAssetImageWidget(Images.adsImage, height: 85, width: 98, flipX: isArabic),
         ),
 
       ],
