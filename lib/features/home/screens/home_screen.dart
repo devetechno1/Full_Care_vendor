@@ -290,7 +290,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(height: Dimensions.paddingSizeSmall),
                         Text(
-                          profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.balance) : '0',
+                          profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.balance, asFixed: 2) : '0',
                           style: robotoBold.copyWith(fontSize: 24, color: Theme.of(context).cardColor),
                         ),
                 
@@ -317,7 +317,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const SizedBox(height: Dimensions.paddingSizeExtraSmall),
                             Text(
-                              profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.cashInHands) : '0',
+                              profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.cashInHands, asFixed: 2) : '0',
                               style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge, color: Theme.of(context).cardColor),
                             ),
                 
@@ -340,7 +340,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const SizedBox(height: Dimensions.paddingSizeExtraSmall),
                             Text(
-                              profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.debtValue) : '0',
+                              profileController.profileModel != null ? PriceConverterHelper.convertPrice(profileController.profileModel!.debtValue, asFixed: 2) : '0',
                               style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge, color: Theme.of(context).cardColor),
                             ),
                 
