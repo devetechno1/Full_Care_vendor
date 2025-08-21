@@ -1,4 +1,5 @@
 {
+  "offline_payment": "Offline Payment",
   "wallet_top_up": "Wallet top-up",
   "settle_deferred_profits": "Settle deferred profits",
   "no_transactions_available": "No transactions available",

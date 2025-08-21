@@ -14,15 +14,15 @@ class DevAccountCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String mainAmount = (item.value != null)
-        ? PriceConverterHelper.convertPrice(item.value)
+        ? PriceConverterHelper.convertPrice(item.value, asFixed: 2)
         : '';
 
     final String orderTotal = (item.orderTotal != null)
-        ? PriceConverterHelper.convertPrice(item.orderTotal)
+        ? PriceConverterHelper.convertPrice(item.orderTotal, asFixed: 2)
         : '';
 
     final String debtText = (item.debt != null && item.debt! > 0)
-        ? PriceConverterHelper.convertPrice(item.debt)
+        ? PriceConverterHelper.convertPrice(item.debt, asFixed: 2)
         : '';
 
     final String dateStr = item.dateFormatted ?? item.date ?? '';
@@ -99,7 +99,7 @@ class DevAccountCardWidget extends StatelessWidget {
                   children: [
                     if ((item.payMethod ?? '').trim().isNotEmpty)
                       _kvChip('${'payment_method'.tr}: ${item.payMethod!.tr}', context, maxChipWidth),
-                    if ((item.orderPayType ?? '').trim().isNotEmpty)
+                    if ((item.orderPayType ?? '').trim().isNotEmpty && item.payMethod != item.orderPayType)
                       _kvChip('${'order_pay_type'.tr}: ${item.orderPayType!.tr}', context, maxChipWidth),
                     if (item.orderId != null)
                       _kvChip('${'order_id'.tr}: ${item.orderId}', context, maxChipWidth),

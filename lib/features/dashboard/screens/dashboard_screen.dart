@@ -56,7 +56,7 @@ class DashboardScreenState extends State<DashboardScreen> {
       authController.getModuleType() == 'rental' ? const TaxiHomeScreen() : const HomeScreen(),
       authController.getModuleType() == 'rental' ? const TripHistoryScreen() : const OrderHistoryScreen(),
       authController.getModuleType() == 'rental' ? const ProviderScreen() : const StoreScreen(),
-      isEmployee ? const CategoryScreen(categoryModel: null,showBackButton: false) : const DevAccountsScreen(),
+      isEmployee || Get.find<ProfileController>().profileModel?.subscriptionTransactions == true ? const CategoryScreen(categoryModel: null,showBackButton: false) : const DevAccountsScreen(),
       Container(),
     ];
 
@@ -174,9 +174,9 @@ class DashboardScreenState extends State<DashboardScreen> {
                 const Expanded(child: SizedBox()),
 
                 BottomNavItemWidget(
-                  title: isEmployee ? 'categories'.tr : 'transactions'.tr,
-                  selectedIcon: isEmployee ? Images.categories : Images.walletSelect,
-                  unSelectedIcon: isEmployee ? Images.categoriesUnselect : Images.walletUnSelect,
+                  title: isEmployee ||  Get.find<ProfileController>().profileModel?.subscriptionTransactions == true? 'categories'.tr : 'transactions'.tr,
+                  selectedIcon: isEmployee || Get.find<ProfileController>().profileModel?.subscriptionTransactions == true? Images.categories : Images.walletSelect,
+                  unSelectedIcon: isEmployee ||  Get.find<ProfileController>().profileModel?.subscriptionTransactions == true? Images.categoriesUnselect : Images.walletUnSelect,
                   isSelected: _pageIndex == 3,
                   onTap: () => _setPage(3),
                 ),
