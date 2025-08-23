@@ -74,8 +74,10 @@ class _AddItemScreenState extends State<AddItemScreen> with TickerProviderStateM
   void initState() {
     super.initState();
 
-    Get.find<StoreController>().initItemData(item: widget.item, isFood: isFood, isGrocery: isGrocery, isPharmacy: isPharmacy);
-    Get.find<CategoryController>().getCategoryList(widget.item);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Get.find<StoreController>().initItemData(item: widget.item, isFood: isFood, isGrocery: isGrocery, isPharmacy: isPharmacy);
+      Get.find<CategoryController>().getCategoryList(widget.item);
+    });
 
     _tabController = TabController(length: _languageList!.length, vsync: this);
     for (var language in _languageList) {

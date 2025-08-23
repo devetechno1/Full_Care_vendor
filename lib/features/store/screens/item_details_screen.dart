@@ -97,7 +97,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                           maxLines: 1, overflow: TextOverflow.ellipsis,
                         ),
 
-                        module != null && module.stock != null ? Row(children: [
+                        module != null && module.stock != null && item.stock != null && !isFood ? Row(children: [
 
                           Text('${'total_stock'.tr}:', style: robotoRegular),
                           const SizedBox(width: Dimensions.paddingSizeExtraSmall),
@@ -192,13 +192,17 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                       ),
                     ),
 
-                    FlutterSwitch(
-                      width: 60, height: 30, valueFontSize: Dimensions.fontSizeExtraSmall, showOnOff: true,
-                      activeColor: Theme.of(context).primaryColor,
-                      value: storeController.isAvailable,
-                      onToggle: (bool isActive) {
-                        storeController.toggleAvailable(item.id);
-                       },
+                    Directionality(
+                      textDirection: TextDirection.ltr,
+                      child: FlutterSwitch(
+                        activeText: "yes".tr, inactiveText: "no".tr,
+                        width: 60, height: 30, valueFontSize: Dimensions.fontSizeExtraSmall, showOnOff: true,
+                        activeColor: Theme.of(context).primaryColor,
+                        value: storeController.isAvailable,
+                        onToggle: (bool isActive) {
+                          storeController.toggleAvailable(item.id);
+                         },
+                      ),
                     ),
 
                   ]),
@@ -221,12 +225,16 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                       ),
                     ),
 
-                    FlutterSwitch(
-                      width: 60, height: 30, valueFontSize: Dimensions.fontSizeExtraSmall, showOnOff: true,
-                      activeColor: Theme.of(context).primaryColor,
-                      value: storeController.isRecommended, onToggle: (bool isActive) {
-                      storeController.toggleRecommendedProduct(item.id);
-                      },
+                    Directionality(
+                      textDirection: TextDirection.ltr,
+                      child: FlutterSwitch(
+                        activeText: "yes".tr, inactiveText: "no".tr,
+                        width: 60, height: 30, valueFontSize: Dimensions.fontSizeExtraSmall, showOnOff: true,
+                        activeColor: Theme.of(context).primaryColor,
+                        value: storeController.isRecommended, onToggle: (bool isActive) {
+                        storeController.toggleRecommendedProduct(item.id);
+                        },
+                      ),
                     ),
 
                   ]),
@@ -249,12 +257,16 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                       ),
                     ),
 
-                    FlutterSwitch(
-                      width: 60, height: 30, valueFontSize: Dimensions.fontSizeExtraSmall, showOnOff: true,
-                      activeColor: Theme.of(context).primaryColor,
-                      value: storeController.isOrganic, onToggle: (bool isActive) {
-                      storeController.toggleOrganicProduct(item.id);
-                      },
+                    Directionality(
+                      textDirection: TextDirection.ltr,
+                      child: FlutterSwitch(
+                        activeText: "yes".tr, inactiveText: "no".tr,
+                        width: 60, height: 30, valueFontSize: Dimensions.fontSizeExtraSmall, showOnOff: true,
+                        activeColor: Theme.of(context).primaryColor,
+                        value: storeController.isOrganic, onToggle: (bool isActive) {
+                        storeController.toggleOrganicProduct(item.id);
+                        },
+                      ),
                     ),
 
                   ]),
